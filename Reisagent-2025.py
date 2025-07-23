@@ -39,7 +39,7 @@ class Reisagent:
                 min_temp = dag['mintempC']
                 kans_op_regen = dag['hourly'][4]['chanceofrain']
                 dagen.append(f"📅 {datum}: {min_temp}–{max_temp}°C, regen: {kans_op_regen}%")
-            return "
+            return
 ".join(dagen)
         except:
             return "⚠ Weerdata kon niet worden opgehaald."
