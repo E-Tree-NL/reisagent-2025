@@ -39,8 +39,7 @@ class Reisagent:
                 min_temp = dag['mintempC']
                 kans_op_regen = dag['hourly'][4]['chanceofrain']
                 dagen.append(f"📅 {datum}: {min_temp}–{max_temp}°C, regen: {kans_op_regen}%")
-            return
-".join(dagen)
+            return "\n".join(dagen)
         except:
             return "⚠ Weerdata kon niet worden opgehaald."
 
@@ -86,11 +85,7 @@ weer = agent.check_weer_echt(locatie_keuze)
 hemelsbreed = agent.afstand_tussen((52.0802, 5.4169), selectie['coords'])
 weg_km = agent.echte_autokilometers((52.0802, 5.4169), selectie['coords'])
 
-st.success(f"🎯 Bestemming: {locatie_keuze}
-
-📌 Reden: {reden}
-
-🚗 Hemelsbreed: {hemelsbreed} km | Over de weg: {weg_km if weg_km >= 0 else 'onbekend'} km")
+st.success(f"🎯 Bestemming: {locatie_keuze}\n\n📌 Reden: {reden}\n\n🚗 Hemelsbreed: {hemelsbreed} km | Over de weg: {weg_km if weg_km >= 0 else 'onbekend'} km")
 st.markdown("### 🌤 Weer de komende 14 dagen:")
 st.text(weer)
 
